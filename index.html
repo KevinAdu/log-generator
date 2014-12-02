@@ -4,8 +4,15 @@
 	<title>Log Generator</title>
 	<meta charset="utf-8">
 	<script type="text/javascript" src="assets/lib/angular.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
 </head>
-<body>
-	
+<body ng-app="app">
+	<div id="container">
+	<section ng-controller="fieldController">
+		<select>
+			<option ng-repeat="fieldType in fieldTypes">{{fieldType}}</option>
+		</select>
+	</section>
+	</div>
 </body>
 </html>
