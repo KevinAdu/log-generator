@@ -3,19 +3,26 @@
 <head>
 	<title>Log Generator</title>
 	<meta charset="utf-8">
-	<script type="text/javascript" src="assets/lib/angular.min.js"></script>
-	<script type="text/javascript" src="app/app.js"></script>
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+	<script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers/fieldController.js"></script>
+	<script type="text/javascript" src="js/services/httpService.js"></script>
 </head>
-<body ng-app="app">
+<body ng-app="logGeneratorApp">
 	<div id="container">
-	<section ng-controller="fieldController">
+	<section ng-controller="FieldController">
 		<select ng-model="inputTypes" ng-options="type as type for type in fieldTypes">
 			<option value="">Select Field Type</option>
 		</select>
 		<button ng-click="selectField()">Select</button>
-		<label ng-repeat="$index in selected">{{selected[$index]}}</label>
-		<button>Generate</button>
-		<input type="text">
+		<label ng-repeat="$index in logDetails.types">{{logDetails.types[$index]}}</label>
+		<form ng-submit="submitLogDetails()">
+			<input type="text" ng-model="logDetails.count">
+			<input type="submit" value="Submit" id="submit">
+		</form>
 	</section>
 	</div>
 </body>
