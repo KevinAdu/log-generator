@@ -9,9 +9,11 @@
 <body ng-app="app">
 	<div id="container">
 	<section ng-controller="fieldController">
-		<select ng-model="fieldTypes" ng-options="type as type for type in fieldTypes">
+		<select ng-model="inputTypes" ng-options="type as type for type in fieldTypes">
 			<option value="">Select Field Type</option>
 		</select>
+		<button ng-click="selectField()">Select</button>
+		<label ng-repeat="$index in selected">{{selected[$index]}}</label>
 	</section>
 	</div>
 </body>
