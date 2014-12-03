@@ -1,10 +1,12 @@
 var module = angular.module('app', []);
 
-function mainController($scope) {
-	$scope.fieldTypes = [
-		'Date/Time',
-		'IP Address',
-		'Number',
-		'String'
-	];
-}
+module.controller('fieldController', ['$scope', 
+	function($scope) {
+		$scope.fieldTypes = [
+			'Date/Time',
+			'IP Address',
+			'Number',
+			'String'
+		];
+	}
+]);

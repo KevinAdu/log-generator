@@ -9,8 +9,8 @@
 <body ng-app="app">
 	<div id="container">
 	<section ng-controller="fieldController">
-		<select>
-			<option ng-repeat="fieldType in fieldTypes">{{fieldType}}</option>
+		<select ng-model="fieldTypes" ng-options="type as type for type in fieldTypes">
+			<option value="">Select Field Type</option>
 		</select>
 	</section>
 	</div>
