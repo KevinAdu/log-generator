@@ -1,5 +1,10 @@
 module.exports = function(app) {
 
+	var Chance = require('chance');
+	var moment = require('moment');
+
+	var chance = new Chance();
+
 	var logFile = '';
 
 	app.post('/log', function(req, res) {
@@ -22,6 +27,7 @@ module.exports = function(app) {
 	}
 
 	function generateLogEntry(dataTypes) {
+		
 		var logEntry = [];
 		for (var i = 0; i < dataTypes.length; i++) {
 			logEntry.push(generateField(dataTypes[i]));
@@ -33,10 +39,14 @@ module.exports = function(app) {
 	function generateField(dataType) {
 		var field;
 
-		if (dataType = 'Number') {
+		if (dataType == 'Number') {
 			field = Math.floor(Math.random() * 1000);
+		} else if (dataType == 'IP Address') {
+			field = chance.ip();
+		} else if (dataType == 'Date/Time') {
+			field = moment(chance.timestamp()).format();
 		}
-
+		
 		return field;
 	}
 	
