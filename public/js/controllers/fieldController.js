@@ -18,8 +18,8 @@ angular.module('logGeneratorApp').controller('FieldController', function ($scope
 		};
 
 		$scope.submitLogDetails = function() {
-			httpService.create($scope.logDetails).then(function(data) {
-				console.log(data);
+			httpService.create($scope.logDetails).then(function(response) {
+				$scope.logData = response.data;
 			})
 		};
 	}

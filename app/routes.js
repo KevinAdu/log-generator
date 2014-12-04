@@ -9,7 +9,6 @@ module.exports = function(app) {
 
 	app.post('/log', function(req, res) {
 		var log = buildLog(req.body);
-		console.log(log);
 		res.send(log);
 	});
 
@@ -28,9 +27,16 @@ module.exports = function(app) {
 
 	function generateLogEntry(dataTypes) {
 		
-		var logEntry = [];
+		var logEntry = '',
+			formatChar = ' ';
 		for (var i = 0; i < dataTypes.length; i++) {
-			logEntry.push(generateField(dataTypes[i]));
+
+			if (dataTypes.length - 1 == i) {
+				formatChar = '\n';
+			}
+
+			logEntry += generateField(dataTypes[i]) + formatChar;
+
 		}
 
 		return logEntry;
