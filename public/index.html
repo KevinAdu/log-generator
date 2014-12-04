@@ -13,14 +13,15 @@
 </head>
 <body ng-app="logGeneratorApp">
 	<div id="container">
+	<h1>Log Generator</h1>
 	<section ng-controller="FieldController">
 		<select ng-model="inputTypes" ng-options="type as type for type in fieldTypes">
 			<option value="">Select Field Type</option>
 		</select>
 		<button ng-click="selectField()">Select</button>
-		<label ng-repeat="$index in logDetails.types">{{logDetails.types[$index]}}</label>
-		<form ng-submit="submitLogDetails()">
-			<input type="text" ng-model="logDetails.count">
+		<label ng-repeat="type in logDetails.types track by $index">{{type}}</label>
+		<form ng-submit="submitLogDetails()" role="form">
+			<input type="number" ng-model="logDetails.count">
 			<input type="submit" value="Submit" id="submit">
 		</form>
 	</section>
