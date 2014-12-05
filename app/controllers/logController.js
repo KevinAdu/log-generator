@@ -8,7 +8,7 @@
 		}
 
 		return log;
-	}
+	};
 
 	function generateLogEntry(dataTypes) {
 		
@@ -29,7 +29,7 @@
 
 	function generateField(dataType) {
 		var field,
-			chance = new Chance();
+			chance = new Chance(Math.random);
 
 		if (dataType == 'Number') {
 			field = Math.floor(Math.random() * 1000);
@@ -37,6 +37,10 @@
 			field = chance.ip();
 		} else if (dataType == 'Date/Time') {
 			field = moment(chance.timestamp()).format();
+		} else if (dataType == 'Name') {
+			field = chance.name();
+		} else if (dataType == 'Credit Card Number') {
+			field = chance.cc();
 		}
 		
 		return field;

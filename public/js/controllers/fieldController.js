@@ -2,7 +2,9 @@ angular.module('logGeneratorApp').controller('FieldController', function ($scope
 		$scope.fieldTypes = [
 			'Date/Time',
 			'IP Address',
-			'Number'
+			'Number',
+			'Name',
+			'Credit Card Number'
 		];
 
 		$scope.inputType = $scope.fieldTypes[0];
