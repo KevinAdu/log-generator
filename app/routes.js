@@ -13,10 +13,10 @@ module.exports = function(app) {
 
 	app.get('/download', function(req, res) {
 		res.download('log.txt');
-	})
+	});
 
 	app.get('*', function(req, res) {
 		res.sendfile('./public/index.html');
 	});
 	
-}
+};

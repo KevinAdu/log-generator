@@ -1,0 +1,34 @@
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.form-horizontal .form-group {
+	margin-right: 0;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+.field-list, .log-text-area {
+	height: 150px;
+	overflow-y: auto;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.area-label {
+	padding-left: 15px;
+}
+
+.field-list .field-type {
+	margin: 7px;
+	width: 139px;
+}
+
+.log-text-area {
+	width: 100%;
+}

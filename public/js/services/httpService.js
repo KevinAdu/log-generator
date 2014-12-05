@@ -3,5 +3,5 @@ angular.module('logGeneratorApp').service('httpService', ['$http', function ($ht
 		create : function(logFormat) {
 			return $http.post('/log', logFormat);
 		}
-	}
+	};
 }]);
