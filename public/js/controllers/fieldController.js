@@ -5,11 +5,13 @@ angular.module('logGeneratorApp').controller('FieldController', function ($scope
 			'Number'
 		];
 
-//Possibly make into a service
+		//Possibly make into a service
 		$scope.logDetails = {
 			types: [],
 			count: 0
 		};
+
+		$scope.downloadLink = '/download';
 
 		$scope.selectField = function() {
 			if ($scope.inputTypes !== undefined) {
