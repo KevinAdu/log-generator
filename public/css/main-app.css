@@ -3,10 +3,6 @@
     margin: 0 auto;
 }
 
-.form-horizontal .form-group {
-	margin-right: 0;
-}
-
 h1 {
 	margin-bottom: 20px;
 }
@@ -17,11 +13,6 @@ h1 {
 	border-radius: 3px;
 	border: 1px solid #ccc;
 	padding: 10px;
-	margin-bottom: 20px;
-}
-
-.area-label {
-	padding-left: 15px;
 }
 
 .field-list .field-type {
@@ -31,4 +22,16 @@ h1 {
 
 .log-text-area {
 	width: 100%;
+}
+
+body .container {
+	padding-bottom: 20px;
+}
+
+button.clear {
+	margin-right: 12px;
+}
+
+form {
+	margin: 30px;
 }

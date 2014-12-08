@@ -17,13 +17,7 @@
 	<div class="container" ng-controller="FieldController">
 		<div class="col-md-7 col-centered">
 			<h1 class="text-center">Log Generator</h1>
-			<form role="form" class="form-horizontal center-block">
-				<div class="form-group">
-					<label class="control-label col-sm-3">No. of log entries</label>
-					<div class="col-sm-7">
-						<input type="number" ng-model="logDetails.count" class="form-control" />
-					</div>
-				</div>
+			<form role="form" class="form-horizontal">
 				<div class="form-group">
 					<label class="control-label col-sm-3">Field Type</label>
 					<div class="col-sm-7">
@@ -31,19 +25,25 @@
 					</div>
 					<button ng-click="selectField()" class="btn pull-right">Add</button>
 				</div>
+			</form>
+			<h3 class="area-label">Field List</h3>
+			<div class="field-list">
+				<button ng-repeat="type in logDetails.types track by $index" class="btn btn-default field-type" ng-click="clearLogDetail($index)">
+					{{type}} <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+				</button>
+			</div>
+			<form role="form" class="form-horizontal">
 				<div class="form-group">
+					<label class="control-label col-sm-3">No. of log entries</label>
+					<div class="col-sm-7">
+						<input type="number" ng-model="logDetails.count" class="form-control" />
+					</div>
 					<button ng-click="submitLogDetails()" class="btn pull-right">Submit</button>
 				</div>
 			</form>
-			<label class="area-label">Field List</label>
-			<div class="field-list">
-				<button ng-repeat="type in logDetails.types track by $index" class="btn btn-default field-type">
-					{{type}} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-				</button>
-			</div>
-			<label class="area-label">Log Data</label>
+			<h3 class="area-label">Log Data</h3>
 			<textarea ng-model="logData" class="log-text-area"></textarea>
-			<a target="_self" ng-href="{{downloadLink}}" ng-show="{{logData.length}}" >
+			<a target="_self" ng-href="{{downloadLink}}" ng-show="logData" >
 				<button class="btn">Download</button>
 			</a>
 			
