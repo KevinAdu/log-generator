@@ -24,11 +24,7 @@ angular.module('logGeneratorApp').controller('FieldController', function ($scope
 		};
 
 		$scope.clearLogDetail = function(index) {
-			$scope.logDetails.types.pop(index);
-		};
-
-		$scope.clearLogDetails = function() {
-			$scope.logDetails.types = [];	
+			$scope.logDetails.types.splice(index, 1);
 		};
 
 		$scope.submitLogDetails = function() {

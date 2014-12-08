@@ -2,9 +2,9 @@
 	var moment = require('moment');
 
 	exports.buildLog = function(logFormat) {
-		var log = [];
+		var log = '';
 		for (var j = 0; j < logFormat.count; j++) {
-			log.push(generateLogEntry(logFormat.types));
+			log += generateLogEntry(logFormat.types);
 		}
 
 		return log;
