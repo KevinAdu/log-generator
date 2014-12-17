@@ -5,38 +5,53 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="libs/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
 	<link rel="stylesheet" href="css/main-app.css">
-	<script src="libs/angular/angular.js"></script>
-	<script src="libs/angular-route/angular-route.min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript" src="js/controllers/fieldController.js"></script>
-	<script type="text/javascript" src="js/services/httpService.js"></script>
-	<script type="text/javascript" src="js/services/httpService.js"></script>
+	<script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/libs/moment/min/moment.min.js"></script>
+	<script type="text/javascript" src="/libs/angular/angular.js"></script>
+	<script type="text/javascript" src="/libs/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="/libs/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript" src="/js/controllers/fieldController.js"></script>
+	<script type="text/javascript" src="/js/directives/dateTimePicker.js"></script>
+	<script type="text/javascript" src="/js/services/httpService.js"></script>
 </head>
 <body ng-app="logGeneratorApp">
 	<div class="container" ng-controller="FieldController">
-		<div class="col-md-7 col-centered">
+		<div class="col-md-9 col-centered">
 			<h1 class="text-center">Log Generator</h1>
 			<form role="form" class="form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-3">Field Type</label>
-					<div class="col-sm-7">
-						<select ng-model="inputType" ng-options="type as type for type in fieldTypes" class="form-control"></select>
+					<label class="control-label col-sm-1">Field Type</label>
+					<div class="col-sm-9">
+						<select ng-model="selectedFieldType" ng-options="type as type for type in fieldTypes" class="form-control"></select>
 					</div>
 					<button ng-click="selectField()" class="btn pull-right">Add</button>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-1">From: </label>
+					<div class="col-sm-4">
+						<date-picker setdate="setFromDate(date)" />
+					</div>
+					<label class="control-label col-sm-1">To: </label>
+					<div class="col-sm-4">
+						<date-picker setdate="setToDate(date)" />
+					</div>
 				</div>
 			</form>
 			<h3 class="area-label">Field List</h3>
 			<div class="field-list">
-				<button ng-repeat="type in logDetails.types track by $index" class="btn btn-default field-type" ng-click="clearLogDetail($index)">
-					{{type}} <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+				<button ng-repeat="dataType in dataTypes track by $index" class="btn btn-default field-type" ng-click="clearLogDetail($index)">
+					{{dataType.name}} <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
 				</button>
 			</div>
 			<form role="form" class="form-horizontal">
 				<div class="form-group">
 					<label class="control-label col-sm-3">No. of log entries</label>
 					<div class="col-sm-7">
-						<input type="number" ng-model="logDetails.count" class="form-control" />
+						<input type="number" ng-model="entryCount" class="form-control" />
 					</div>
 					<button ng-click="submitLogDetails()" class="btn pull-right">Submit</button>
 				</div>
@@ -46,7 +61,6 @@
 			<a target="_self" ng-href="{{downloadLink}}" ng-show="logData" >
 				<button class="btn">Download</button>
 			</a>
-			
 		</div>
 	</div>
 </body>

@@ -1,1 +1,1 @@
-angular.module('logGeneratorApp', ['ngRoute']);
+var app = angular.module('logGeneratorApp', ['ui.bootstrap.datetimepicker']);

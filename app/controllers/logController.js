@@ -14,6 +14,7 @@
 		
 		var logEntry = '',
 		formatChar = ' ';
+		
 		for (var i = 0; i < dataTypes.length; i++) {
 
 			if (dataTypes.length - 1 == i) {
@@ -21,27 +22,35 @@
 			}
 
 			logEntry += generateField(dataTypes[i]) + formatChar;
-
 		}
 
 		return logEntry;
 	}
 
-	function generateField(dataType) {
-		var field,
-			chance = new Chance(Math.random);
+function generateField(dataType) {
 
-		if (dataType == 'Number') {
-			field = Math.floor(Math.random() * 1000);
-		} else if (dataType == 'IP Address') {
-			field = chance.ip();
-		} else if (dataType == 'Date/Time') {
-			field = moment(chance.timestamp()).format();
-		} else if (dataType == 'Name') {
-			field = chance.name();
-		} else if (dataType == 'Credit Card Number') {
-			field = chance.cc();
-		}
-		
-		return field;
+	var field,
+	chance = new Chance(Math.random),
+	type = dataType.name;
+
+	if (type == 'Number') {
+		field = Math.floor(Math.random() * 1000);
+	} else if (type == 'IP Address') {
+		field = chance.ip();
+	} else if (type == 'Date/Time') {
+		var minDate =  moment(dataType.options.fromDate).valueOf(),
+		maxDate = moment(dataType.options.toDate).valueOf();
+		field = moment(chance.timestamp({
+			min: minDate,
+			max: maxDate
+		})).format();
+
+
+	} else if (type == 'Name') {
+		field = chance.name();
+	} else if (type == 'Credit Card Number') {
+		field = chance.cc();
 	}
+
+	return field;
+}
