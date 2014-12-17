@@ -12,9 +12,9 @@
 	};
 
 	function generateLogEntry(dataTypes, count, entryIteration) {
-		
+
 		var logEntry = '',
-		formatChar = ' ';
+		formatChar = ',';
 		
 		for (var i = 0; i < dataTypes.length; i++) {
 
@@ -36,7 +36,7 @@ function generateField(dataType, count, iteration) {
 	rate = (dataType.options.rate > 0 ? Math.round((dataType.options.rate/100) * count) : 0);
 
 	if (type == 'Number') {
-		field = chance.floating({fixed: dataType.options.decimal});
+		field = Math.floor(Math.random() * Math.pow(10, dataType.options.digit));
 	} else if (type == 'IP Address') {
 		field =  (rate > iteration) ?  dataType.options.repeated : chance.ip();
 	} else if (type == 'Date/Time') {

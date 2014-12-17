@@ -15,15 +15,11 @@ app.controller('FieldController', function ($scope, httpService) {
 	$scope.options = {
 		repeated: '',
 		rate: 0,
-		decimal: 0
+		digit: 0
 	};
 
 	$scope.setOptions = function(field, value) {
 		$scope.options[field] = value;
-	};
-
-	$scope.setFromDate = function(date) {
-		$scope.options.fromDate = date;
 	};
 
 	$scope.selectField = function() {
@@ -31,6 +27,11 @@ app.controller('FieldController', function ($scope, httpService) {
 			name: $scope.selectedFieldType,
 			options: $scope.options 
 		});
+		$scope.options = {
+			repeated: '',
+			rate: 0,
+			digit: 0
+		};
 	};
 
 	$scope.clearLogDetail = function(index) {
