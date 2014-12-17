@@ -3,14 +3,15 @@
 
 	exports.buildLog = function(logFormat) {
 		var log = '';
-		for (var j = 0; j < logFormat.count; j++) {
-			log += generateLogEntry(logFormat.types);
+		for(var i = 0; i < logFormat.count; i++) {
+
+			log += generateLogEntry(logFormat.types, logFormat.count, i);
 		}
 
 		return log;
 	};
 
-	function generateLogEntry(dataTypes) {
+	function generateLogEntry(dataTypes, count, entryIteration) {
 		
 		var logEntry = '',
 		formatChar = ' ';
@@ -21,23 +22,25 @@
 				formatChar = '\n';
 			}
 
-			logEntry += generateField(dataTypes[i]) + formatChar;
+			logEntry += generateField(dataTypes[i], count, entryIteration) + formatChar;
 		}
 
 		return logEntry;
 	}
 
-function generateField(dataType) {
+function generateField(dataType, count, iteration) {
 
 	var field,
 	chance = new Chance(Math.random),
-	type = dataType.name;
+	type = dataType.name,
+	rate = (dataType.options.rate > 0 ? Math.round((dataType.options.rate/100) * count) : 0);
 
 	if (type == 'Number') {
-		field = Math.floor(Math.random() * 1000);
+		field = chance.floating({fixed: dataType.options.decimal});
 	} else if (type == 'IP Address') {
-		field = chance.ip();
+		field =  (rate > iteration) ?  dataType.options.repeated : chance.ip();
 	} else if (type == 'Date/Time') {
+
 		var minDate =  moment(dataType.options.fromDate).valueOf(),
 		maxDate = moment(dataType.options.toDate).valueOf();
 		field = moment(chance.timestamp({
@@ -45,11 +48,10 @@ function generateField(dataType) {
 			max: maxDate
 		})).format();
 
-
 	} else if (type == 'Name') {
-		field = chance.name();
+		field =  (rate > iteration) ?  dataType.options.repeated : chance.name();
 	} else if (type == 'Credit Card Number') {
-		field = chance.cc();
+		field =  (rate > iteration) ?  dataType.options.repeated : chance.cc();
 	}
 
 	return field;

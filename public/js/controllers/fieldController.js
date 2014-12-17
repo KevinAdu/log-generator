@@ -12,10 +12,14 @@ app.controller('FieldController', function ($scope, httpService) {
 	$scope.dataTypes = [];
 	$scope.entryCount = 1;
 	$scope.downloadLink = '/download';
-	$scope.options = {};
+	$scope.options = {
+		repeated: '',
+		rate: 0,
+		decimal: 0
+	};
 
-	$scope.setToDate = function(date) {
-		$scope.options.toDate = date;
+	$scope.setOptions = function(field, value) {
+		$scope.options[field] = value;
 	};
 
 	$scope.setFromDate = function(date) {

@@ -1,4 +1,4 @@
-app.directive('datePicker', function($timeout) {
+app.directive('datePicker', function() {
 	return {
 		restrict: 'E',
 		scope :{
