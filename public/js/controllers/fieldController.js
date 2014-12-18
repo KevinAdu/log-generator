@@ -6,7 +6,8 @@ app.controller('FieldController', function ($scope, httpService) {
 		'Number',
 		'Name',
 		'Credit Card Number',
-		'Expiration Date'
+		'Expiration Date',
+		'Boolean'
 	];
 
 	$scope.selectedFieldType = $scope.fieldTypes[0];
@@ -16,7 +17,9 @@ app.controller('FieldController', function ($scope, httpService) {
 	$scope.options = {
 		repeated: '',
 		rate: 0,
-		digit: 0
+		digit: 0,
+		valueOne: 'True',
+		valueTwo: 'False'
 	};
 
 	$scope.setOptions = function(field, value) {
@@ -31,7 +34,9 @@ app.controller('FieldController', function ($scope, httpService) {
 		$scope.options = {
 			repeated: '',
 			rate: 0,
-			digit: 0
+			digit: 0,
+			valueOne: 'True',
+			valueTwo: 'False'
 		};
 	};
 
