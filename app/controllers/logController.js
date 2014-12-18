@@ -43,7 +43,7 @@ function generateField(dataType, count, iteration) {
 		field = moment(chance.date({
 			min: new Date(dataType.options.fromDate),
 			max: new Date(dataType.options.toDate)
-		})).format('YYYY-MM-DD HH:mm Z');
+		})).format('YYYY-MM-DD HH:mm');
 
 	} else if (type == 'Name') {
 		field =  (rate > iteration) ?  dataType.options.repeated : chance.name();
