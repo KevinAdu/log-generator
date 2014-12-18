@@ -5,7 +5,8 @@ app.controller('FieldController', function ($scope, httpService) {
 		'IP Address',
 		'Number',
 		'Name',
-		'Credit Card Number'
+		'Credit Card Number',
+		'Expiration Date'
 	];
 
 	$scope.selectedFieldType = $scope.fieldTypes[0];

@@ -76,6 +76,16 @@
 						<input ng-model="options.rate" type="number" class="form-control" />
 					</div>
 				</div>
+				<div class="form-group" ng-show="'Expiration Date' === selectedFieldType">
+					<label class="control-label col-sm-1">From: </label>
+					<div class="col-sm-4">
+						<date-picker setdate="setOptions('fromDate', date)" />
+					</div>
+					<label class="control-label col-sm-1">To: </label>
+					<div class="col-sm-4">
+						<date-picker setdate="setOptions('toDate', date)" />
+					</div>
+				</div>
 			</form>
 			<h3 class="area-label">Field List</h3>
 			<div class="field-list">

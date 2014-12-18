@@ -40,18 +40,20 @@ function generateField(dataType, count, iteration) {
 	} else if (type == 'IP Address') {
 		field =  (rate > iteration) ?  dataType.options.repeated : chance.ip();
 	} else if (type == 'Date/Time') {
-
-		var minDate =  moment(dataType.options.fromDate).valueOf(),
-		maxDate = moment(dataType.options.toDate).valueOf();
 		field = moment(chance.timestamp({
-			min: minDate,
-			max: maxDate
+			min: moment(dataType.options.fromDate).valueOf(),
+			max: moment(dataType.options.toDate).valueOf()
 		})).format();
 
 	} else if (type == 'Name') {
 		field =  (rate > iteration) ?  dataType.options.repeated : chance.name();
 	} else if (type == 'Credit Card Number') {
 		field =  (rate > iteration) ?  dataType.options.repeated : chance.cc();
+	} else if (type == 'Expiration Date') {
+		field = moment(chance.timestamp({
+			min: moment(dataType.options.fromDate).valueOf(),
+			max: moment(dataType.options.toDate).valueOf()
+		})).format('DD/YY');
 	}
 
 	return field;
