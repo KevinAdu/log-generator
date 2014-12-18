@@ -8,7 +8,7 @@
     "mongoose": "~3.6.2",
     "body-parser": "~1.3.0",
     "method-override" : "~2.0.2",
-    "chance" : "~0.6.4",
+    "chance" : "latest",
     "moment" : "~2.8.4"
   },
   "author": "Kevin",
