@@ -16,7 +16,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(methodOverride('X-HTTP-Method-Override'));
 
-require('./app/routes')(app)
+require('./server/routes')(app)
 
 console.log('start');
 app.listen(3000);

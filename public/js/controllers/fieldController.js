@@ -18,8 +18,8 @@ app.controller('FieldController', function ($scope, httpService) {
 		repeated: '',
 		rate: 0,
 		digit: 0,
-		valueOne: 'True',
-		valueTwo: 'False'
+		valueOne: 'Success',
+		valueTwo: 'Failure'
 	};
 
 	$scope.setOptions = function(field, value) {
