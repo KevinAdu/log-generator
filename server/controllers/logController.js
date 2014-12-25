@@ -87,7 +87,7 @@
 			field = moment(chance.date({
 				min: new Date(dataType.options.fromDate),
 				max: new Date(dataType.options.toDate)
-			})).format('DD/YY');
+			})).format('MM/YY');
 		} else if (type == 'Boolean') {
 			field = chance.weighted([dataType.options.valueOne, dataType.options.valueTwo], [50, 50]);
 		}
