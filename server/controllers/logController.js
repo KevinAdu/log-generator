@@ -82,7 +82,7 @@
 		} else if (type == 'Name') {
 			field =  (rate > iteration) ?  dataType.options.repeated : chance.name();
 		} else if (type == 'Credit Card Number') {
-			field =  (rate > iteration) ?  dataType.options.repeated : chance.cc();
+			field =  (rate > iteration) ?  dataType.options.repeated : chance.cc({type: 'visa'});
 		} else if (type == 'Expiration Date') {
 			field = moment(chance.date({
 				min: new Date(dataType.options.fromDate),
