@@ -10,6 +10,9 @@ app.controller('FieldController', function ($scope, httpService) {
 		'Boolean'
 	];
 
+	var oldRateOne = 50;
+	var oldRateTwo = 50;
+
 	$scope.selectedFieldType = $scope.fieldTypes[0];
 	$scope.dataTypes = [];
 	$scope.entryCount = 1;
@@ -19,7 +22,19 @@ app.controller('FieldController', function ($scope, httpService) {
 		rate: 0,
 		digit: 0,
 		valueOne: 'Success',
-		valueTwo: 'Failure'
+		valueTwo: 'Failure',
+		rateOne: 50,
+		rateTwo: 50
+	};
+
+	$scope.balanceRate = function() {
+		if ($scope.options.rateOne != oldRateOne) {
+			$scope.options.rateTwo += oldRateOne - $scope.options.rateOne;
+			oldRateOne = $scope.options.rateOne;
+		} else if ($scope.options.rateTwo != oldRateTwo) {
+			$scope.options.rateOne += oldRateTwo - $scope.options.rateTwo;
+			oldRateTwo = $scope.options.rateTwo;
+		}
 	};
 
 	$scope.setOptions = function(field, value) {
@@ -35,8 +50,10 @@ app.controller('FieldController', function ($scope, httpService) {
 			repeated: '',
 			rate: 0,
 			digit: 0,
-			valueOne: 'True',
-			valueTwo: 'False'
+			valueOne: 'Success',
+			valueTwo: 'Failure',
+			rateOne: 50,
+			rateTwo: 50
 		};
 	};
 

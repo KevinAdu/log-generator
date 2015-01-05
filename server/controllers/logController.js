@@ -89,7 +89,7 @@
 				max: new Date(dataType.options.toDate)
 			})).format('MM/YY');
 		} else if (type == 'Boolean') {
-			field = chance.weighted([dataType.options.valueOne, dataType.options.valueTwo], [50, 50]);
+			field = chance.weighted([dataType.options.valueOne, dataType.options.valueTwo], [dataType.options.rateOne, dataType.options.rateTwo]);
 		}
 
 		return field;
