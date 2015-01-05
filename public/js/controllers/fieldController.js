@@ -9,9 +9,7 @@ app.controller('FieldController', function ($scope, httpService) {
 		'Expiration Date',
 		'Boolean'
 	];
-
 	var oldRateOne = 50;
-	var oldRateTwo = 50;
 
 	$scope.selectedFieldType = $scope.fieldTypes[0];
 	$scope.dataTypes = [];
@@ -29,10 +27,10 @@ app.controller('FieldController', function ($scope, httpService) {
 
 	$scope.balanceRate = function() {
 		if ($scope.options.rateOne != oldRateOne) {
-			$scope.options.rateTwo += oldRateOne - $scope.options.rateOne;
+			$scope.options.rateTwo = 100 - $scope.options.rateOne;
 			oldRateOne = $scope.options.rateOne;
-		} else if ($scope.options.rateTwo != oldRateTwo) {
-			$scope.options.rateOne += oldRateTwo - $scope.options.rateTwo;
+		} else {
+			$scope.options.rateOne = 100 - $scope.options.rateTwo;
 			oldRateTwo = $scope.options.rateTwo;
 		}
 	};
