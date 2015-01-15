@@ -67,7 +67,8 @@
 		var field,
 		chance = new Chance(Math.random),
 		type = dataType.name,
-		rate = (dataType.options.rate > 0 ? Math.round((dataType.options.rate/100) * count) : 0);
+		rate = (dataType.options.rate > 0 ? Math.round((dataType.options.rate/100) * count) : 0),
+		mask = dataType.options.mask;
 
 		if (type == 'Number') {
 			field = Math.floor(Math.random() * Math.pow(10, dataType.options.digit));
@@ -82,7 +83,12 @@
 		} else if (type == 'Name') {
 			field =  (rate > iteration) ?  dataType.options.repeated : chance.name();
 		} else if (type == 'Credit Card Number') {
+			
 			field =  (rate > iteration) ?  dataType.options.repeated : chance.cc({type: 'visa'});
+			if (mask) {
+				field = field.replace(/(\d{6})\d{6}(\d{4})/, '$1######$2');
+				console.log(field)
+			}
 		} else if (type == 'Expiration Date') {
 			field = moment(chance.date({
 				min: new Date(dataType.options.fromDate),

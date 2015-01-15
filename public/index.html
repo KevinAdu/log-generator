@@ -24,86 +24,94 @@
 			<h1 class="text-center">Log Generator</h1>
 			<form role="form" class="form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-1">Field Type</label>
-					<div class="col-sm-9">
+					<label class="control-label col-md-1">Field Type</label>
+					<div class="col-md-9">
 						<select ng-model="selectedFieldType" ng-options="type as type for type in fieldTypes" class="form-control"></select>
 					</div>
 					<button ng-click="selectField()" class="btn pull-right">Add</button>
 				</div>
 				<div class="form-group" ng-show="'Date/Time' === selectedFieldType">
-					<label class="control-label col-sm-1">From: </label>
-					<div class="col-sm-4">
+					<label class="control-label col-md-1">From: </label>
+					<div class="col-md-4">
 						<date-picker setdate="setOptions('fromDate', date)" />
 					</div>
-					<label class="control-label col-sm-1">To: </label>
-					<div class="col-sm-4">
+					<label class="control-label col-md-1">To: </label>
+					<div class="col-md-4">
 						<date-picker setdate="setOptions('toDate', date)" />
 					</div>
 				</div>
 				<div class="form-group" ng-show="'IP Address' === selectedFieldType">
-					<label class="control-label col-sm-2">Repeated: </label>
-					<div class="col-sm-3">
+					<label class="control-label col-md-2">Repeated: </label>
+					<div class="col-md-3">
 						<input ng-model="options.repeated" type="text" class="form-control"/>
 					</div>
-					<label class="control-label col-sm-2">Rate (%): </label>
-					<div class="col-sm-3">
+					<label class="control-label col-md-2">Rate (%): </label>
+					<div class="col-md-3">
 						<input ng-model="options.rate" type="number" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group" ng-show="'Number' === selectedFieldType">
-					<label class="control-label col-sm-4">Number of Digits: </label>
-					<div class="col-sm-2">
+					<label class="control-label col-md-4">Number of Digits: </label>
+					<div class="col-md-2">
 						<input ng-model="options.digit" type="number" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group" ng-show="'Name' === selectedFieldType">
-					<label class="control-label col-sm-2">Repeated: </label>
-					<div class="col-sm-3">
+					<label class="control-label col-md-2">Repeated: </label>
+					<div class="col-md-3">
 						<input ng-model="options.repeated" type="text" class="form-control" />
 					</div>
-					<label class="control-label col-sm-2">Rate (%): </label>
-					<div class="col-sm-3">
+					<label class="control-label col-md-2">Rate (%): </label>
+					<div class="col-md-3">
 						<input ng-model="options.rate" type="number" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group" ng-show="'Credit Card Number' === selectedFieldType">
-					<label class="control-label col-sm-2">Repeated: </label>
-					<div class="col-sm-3">
-						<input ng-model="options.repeated" type="text" class="form-control" />
+					<div class="form-group">
+						<label class="control-label col-md-2">Repeated: </label>
+						<div class="col-md-3">
+							<input ng-model="options.repeated" type="text" class="form-control" />
+						</div>
+						<label class="control-label col-md-2">Rate (%): </label>
+						<div class="col-md-3">
+							<input ng-model="options.rate" type="number" class="form-control" />
+						</div>
 					</div>
-					<label class="control-label col-sm-2">Rate (%): </label>
-					<div class="col-sm-3">
-						<input ng-model="options.rate" type="number" class="form-control" />
+					<div class="form-group">
+						<label class="control-label col-md-2">Mask: </label>	
+						<div class="col-md-2">
+							<input ng-model="options.mask" type="checkbox"/>
+						</div>
 					</div>
 				</div>
 				<div class="form-group" ng-show="'Expiration Date' === selectedFieldType">
-					<label class="control-label col-sm-1">From: </label>
-					<div class="col-sm-4">
+					<label class="control-label col-md-1">From: </label>
+					<div class="col-md-4">
 						<date-picker setdate="setOptions('fromDate', date)" />
 					</div>
-					<label class="control-label col-sm-1">To: </label>
-					<div class="col-sm-4">
+					<label class="control-label col-md-1">To: </label>
+					<div class="col-md-4">
 						<date-picker setdate="setOptions('toDate', date)" />
 					</div>
 				</div>
 				<div class="form-group" ng-show="'Boolean' === selectedFieldType">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Value One: </label>
-						<div class="col-sm-3">
+						<label class="control-label col-md-2">Value One: </label>
+						<div class="col-md-3">
 							<input ng-model="options.valueOne" type="text" class="form-control" />
 						</div>
-						<label class="control-label col-sm-2">Value Two: </label>
-						<div class="col-sm-3">
+						<label class="control-label col-md-2">Value Two: </label>
+						<div class="col-md-3">
 							<input ng-model="options.valueTwo" type="text" class="form-control" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2">Rate One (%): </label>
-						<div class="col-sm-3">
+						<label class="control-label col-md-2">Rate One (%): </label>
+						<div class="col-md-3">
 							<input ng-model="options.rateOne" type="number" class="form-control" ng-change="balanceRate()"/>
 						</div>
-						<label class="control-label col-sm-2">Rate Two (%): </label>
-						<div class="col-sm-3">
+						<label class="control-label col-md-2">Rate Two (%): </label>
+						<div class="col-md-3">
 							<input ng-model="options.rateTwo" type="number" class="form-control" ng-change="balanceRate()"/>
 						</div>
 					</div>					

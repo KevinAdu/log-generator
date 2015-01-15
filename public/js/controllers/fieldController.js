@@ -22,7 +22,8 @@ app.controller('FieldController', function ($scope, httpService) {
 		valueOne: 'Success',
 		valueTwo: 'Failure',
 		rateOne: 50,
-		rateTwo: 50
+		rateTwo: 50,
+		mask: false
 	};
 
 	$scope.balanceRate = function() {
@@ -31,7 +32,6 @@ app.controller('FieldController', function ($scope, httpService) {
 			oldRateOne = $scope.options.rateOne;
 		} else {
 			$scope.options.rateOne = 100 - $scope.options.rateTwo;
-			oldRateTwo = $scope.options.rateTwo;
 		}
 	};
 
@@ -51,7 +51,8 @@ app.controller('FieldController', function ($scope, httpService) {
 			valueOne: 'Success',
 			valueTwo: 'Failure',
 			rateOne: 50,
-			rateTwo: 50
+			rateTwo: 50,
+			mask: false
 		};
 	};
 
